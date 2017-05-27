@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +19,9 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('admin/users','AdminUserController');
+//resource() crete all our routes for us
+//we need to make controler true gitbash
+//php artisan make:controller --resource AdminUserController
+//--resource will enable us CRUD methods usage
