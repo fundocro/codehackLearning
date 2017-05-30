@@ -26,9 +26,10 @@ elixir(function (mix) {
     ], './public/css/libs.css')//compile all files to here
     
     .scripts([
+        //ORDER OF FILES IS SUPER IMPORTANT :
+        'libs/jquery.js',
         'libs/bootstrap.js',    
         'libs/bootstrap.min.js',
-        'libs/jquery.js',
         'libs/metisMenu.js',
         'libs/sb-admin-2.js',
         'libs/scripts.js'
