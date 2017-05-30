@@ -26,7 +26,7 @@ class User extends Authenticatable
     
     
     public function role(){
-        
+        //seting relation user-role
         return $this->belongsTo('App\Role');
     }//NO ; HERE!
     

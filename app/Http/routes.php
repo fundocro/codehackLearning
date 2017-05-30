@@ -20,8 +20,55 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+//1//
+
+//chek if loged in user is admin
 Route::resource('admin/users','AdminUserController');
 //resource() crete all our routes for us
 //we need to make controler true gitbash
 //php artisan make:controller --resource AdminUserController
 //--resource will enable us CRUD methods usage
+
+//php artisan route:list //chek it out
+//by defoult AdminuserController will route ro AdminuserController@index
+
+//2//
+
+//DOWNLOAD nodejs / Install it!
+//in bash : node -v for version check
+//bash: npm install --global gulp
+//bash: npm install
+
+//gulp will compile our css stylesheets and script  code to one file
+//and make app work faster and be more accesibble
+//laravl location for gulp : vendor/gulpfile.js
+
+//3//
+//SETTING UP GULP FILE gulpfile.js
+//Download all the folders needed from udemy css,fonts,js
+//put js and css folder here : C:\xampp\htdocs\codehack\resources\assets
+//put fonts here: C:\xampp\htdocs\codehack\public
+//now go to gulpfile.js and set bouth css and js files into methods as presented there now
+//go bash: gulp
+//4//
+/////CREATING MASTER ADMIN PAGE
+//Master page for all our ADMIN areas categories,posts, users
+//then we can just @yield('content') and reuse elsewhere
+//create file in: resources\views\layouts/admin.blade.php
+//copy paste code within file that we get from udemy (admin.blade.php zip)
+
+Route::get('/admin',function(){
+    return view('admin.index');//folder.file
+    //in index.php extend admin.php from layouts
+});
+
+//STYLING 
+//resources/assets/sass/app.scss 
+//there we insert style changes to admin page 
+//#admin-page {
+//    padding-top: 0 !important; //use !important if normal way doesnt work
+//}
+//becouse app.scss is above in chain of coomand for styling
+//this file is compiled to our gulp already is in public/css/app.css
+//affter making changess go bash : gulp // to compile changes again
+
