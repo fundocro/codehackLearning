@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index');
 //1//
 
 //chek if loged in user is admin
-Route::resource('admin/users','AdminUserController');
+Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
 //resource() crete all our routes for us
 //we need to make controler true gitbash
 //php artisan make:controller --resource AdminUserController
@@ -68,7 +68,24 @@ Route::get('/admin',function(){
 //#admin-page {
 //    padding-top: 0 !important; //use !important if normal way doesnt work
 //}
-//becouse app.scss is above in chain of coomand for styling
+//becouse app.scss is first in chain of coomand for styling
 //this file is compiled to our gulp already is in public/css/app.css
 //affter making changess go bash : gulp // to compile changes again
+
+//4//EDITING ADMIN USERS INDEX FILE
+//we extend layout from MAIN ADMIN
+//we go to w3schools and copy/paste basic table and modify
+
+//5//
+//ADMIn users create view:
+//@extend() layouts.admin,  modify AdminUserController
+//WE DO NOT NEED A ROUTE , its controlled by AdminUSerController
+//we need to install laravelcollective/html to be able to use
+//predefined forms
+//goggle: laravelcollective/html follow instructions
+//try install manually first
+//modification to composer.json "require"
+//modifications to config app/php
+
+
 

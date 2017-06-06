@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\User;
+
 class AdminUserController extends Controller
 {
     /**
@@ -15,7 +17,10 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');//php artisan route:list
+        $users=User::all();
+        //IMPORT User at the top!!!
+        return view('admin.users.index', compact('users')); 
+        //check php artisan route:list
     }
 
     /**
@@ -25,7 +30,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -36,7 +41,7 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
     }
 
     /**
