@@ -86,6 +86,9 @@ Route::get('/admin',function(){
 //try install manually first
 //modification to composer.json "require"
 //modifications to config app/php
+//insert forms in admin/user/crate view:
+//email, role, status
+
 
 
 
