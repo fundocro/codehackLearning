@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\Role;
+use App\Http\Requests\UserCheckRequest;
 
 class AdminUserController extends Controller
 {
@@ -30,7 +32,11 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        //import Role on top!
+        $roles=Role::lists('name','id')->all();
+        //from roles table getting/converting to array name, id 
+        //true compact() sending name and id to view/form/role
+        return view('admin.users.create',compact('roles'));
     }
 
     /**
@@ -39,9 +45,14 @@ class AdminUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCheckRequest $request)//   original Request
+        //import class on top!!! 
+        //use App\Http\Requests\UserCheckRequest;
+        //http/request/UserCheckRequest
+        //chek authorize admin/user/create froms 
     {
-        return $request->all();
+        return $request->all();//cheking id admin/users/create is returning data
+        
     }
 
     /**

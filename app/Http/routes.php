@@ -79,15 +79,36 @@ Route::get('/admin',function(){
 //5//
 //ADMIn users create view:
 //@extend() layouts.admin,  modify AdminUserController
+//pulling role name & id from roles table
 //WE DO NOT NEED A ROUTE , its controlled by AdminUSerController
 //we need to install laravelcollective/html to be able to use
-//predefined forms
+//predefined html forms
 //goggle: laravelcollective/html follow instructions
 //try install manually first
 //modification to composer.json "require"
 //modifications to config app/php
 //insert forms in admin/user/crate view:
-//email, role, status
+//name,email, role, status
+//modify controller create() , puling roles from table enable select
+//modify admin/users/create :
+
+//make new password field under Status:
+//check in AdminUserController if it returns data from admin/users/create view
+
+//MAKING REQUEST bash: php artisan make:request
+//to stop sending blank forms to table when creating users
+//in request /http/requests/our new req :
+//authorize() set to true and make new rules : 'name'=>'request' ...
+//in AdminUserConreoller change store(ournewrequestnamehere $request) 
+//import class on top!!!
+
+//diplaying errors as a result of our new request in admin/users/create :
+//make new foolder in views : 'includes' and put error.blade.php:
+//inside make @if statement <div> ul  @foreach li (loop true global $errors) li ul ...
+//@include('includes.errors') at the bootom ,after submit form ,of admin/users/create view
+
+
+
 
 
 

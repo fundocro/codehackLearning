@@ -10,7 +10,7 @@
     
         <div class="form-group">
             {!!Form::label('name','Name:')!!}
-            {!!Form::text('title',null,['class'=>'form-control'])!!}
+            {!!Form::text('name',null,['class'=>'form-control'])!!}
         </div>
 
         <div class="form-group">
@@ -22,15 +22,20 @@
 
         <div class="form-group">
             {!!Form::label('role_id','Role:')!!}
-            {!!Form::text('role_id',null,['class'=>'form-control'])!!}
+            {!!Form::select('role_id',[''=>'Choose Role']+$roles,null,['class'=>'form-control'])!!}
         </div>
         
 
         <div class="form-group">
             {!!Form::label('is_active','Status:')!!}
-            {!!Form::select('status',array(1=>'Active',0=>'NotActive'),0,['class'=>'form-control'])!!}
+            {!!Form::select('is_active',array(1=>'Active',0=>'NotActive'),0,['class'=>'form-control'])!!}
         </div>
 
+        <div class="form-group">
+            {!!Form::label('password','Password:')!!}
+            {!!Form::password('password',null,['class'=>'form-control'])!!}
+        </div>
+        
 
 
         
@@ -39,5 +44,9 @@
         </div>
 
     {!!Form::close()!!}
+
+
+@include('includes.errors')
+    
     
 @stop
