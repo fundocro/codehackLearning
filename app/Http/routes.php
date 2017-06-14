@@ -72,7 +72,7 @@ Route::get('/admin',function(){
 //this file is compiled to our gulp already is in public/css/app.css
 //affter making changess go bash : gulp // to compile changes again
 
-//4//EDITING ADMIN USERS INDEX FILE
+//4//EDITING ADMIN USERS INDEX FILE (list of users)
 //we extend layout from MAIN ADMIN
 //we go to w3schools and copy/paste basic table and modify
 
@@ -95,7 +95,7 @@ Route::get('/admin',function(){
 //make new password field under Status:
 //check in AdminUserController if it returns data from admin/users/create view
 
-//MAKING REQUEST bash: php artisan make:request
+//MAKING REQUEST bash: php artisan make:request reqnamehere
 //to stop sending blank forms to table when creating users
 //in request /http/requests/our new req :
 //authorize() set to true and make new rules : 'name'=>'request' ...
@@ -105,7 +105,17 @@ Route::get('/admin',function(){
 //diplaying errors as a result of our new request in admin/users/create :
 //make new foolder in views : 'includes' and put error.blade.php:
 //inside make @if statement <div> ul  @foreach li (loop true global $errors) li ul ...
-//@include('includes.errors') at the bootom ,after submit form ,of admin/users/create view
+//@include('includes.errors') at the bootom ,after submit form ,in admin/users/create view
+
+//6//
+//add another form-group (input file field) in admin/users/create above password
+//modify MAIN form::open([]) add ,'files'=>true // to enable adding files /enctype ...
+//add new column to users table true migration  : photo_id
+//php artisan make:migration add_photo_id_to_users --table=users
+// migrate
+//7//
+//make new model with migration create_photos_table /add column 'title' /add $fillable / make relation 
+
 
 
 

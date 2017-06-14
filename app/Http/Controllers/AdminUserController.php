@@ -45,13 +45,19 @@ class AdminUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCheckRequest $request)//   original Request
+    public function store(UserCheckRequest $request)//   original Request $request
         //import class on top!!! 
         //use App\Http\Requests\UserCheckRequest;
         //http/request/UserCheckRequest
         //chek authorize admin/user/create froms 
     {
-        return $request->all();//cheking id admin/users/create is returning data
+        //return $request->all();//cheking id admin/users/create is returning data
+        //returns error page if fileds not populated
+        
+        User::create($request->all());
+        return redirect('/admin/users');
+        
+        
         
     }
 

@@ -4,7 +4,7 @@
     <h1>Admin.users.Create</h1>
     
 
-    {!!Form::open(['method'=>'POST','action'=>'AdminUserController@store'])!!}
+    {!!Form::open(['method'=>'POST','action'=>'AdminUserController@store','files'=>true])!!}
 
     
     
@@ -31,6 +31,11 @@
             {!!Form::select('is_active',array(1=>'Active',0=>'NotActive'),0,['class'=>'form-control'])!!}
         </div>
 
+        <div class="form-group">
+            {!!Form::label('file','Title:')!!}
+            {!!Form::file('file',null,['class'=>'form-control'])!!}
+        </div>
+        
         <div class="form-group">
             {!!Form::label('password','Password:')!!}
             {!!Form::password('password',null,['class'=>'form-control'])!!}
