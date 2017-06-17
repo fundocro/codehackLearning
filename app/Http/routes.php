@@ -21,7 +21,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 //1//
-
+//MAKE AUTH LOGIN PAGE / php artisan make:auth
 //chek if loged in user is admin
 Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
 //resource() crete all our routes for us
@@ -33,7 +33,7 @@ Route::resource('admin/users','AdminUserController');//admin/users - rest contro
 //by defoult AdminuserController will route ro AdminuserController@index
 
 //2//
-
+//GULP
 //DOWNLOAD nodejs / Install it!
 //in bash : node -v for version check
 //bash: npm install --global gulp
@@ -114,10 +114,40 @@ Route::get('/admin',function(){
 //php artisan make:migration add_photo_id_to_users --table=users
 // migrate
 //7//
-//make new model with migration create_photos_table /add column 'title' /add $fillable / make relation 
+//make new model with migration create_photos_table /add column 'title' /add $fillable / make relation in users to photo
+
+//8//
+//make side columns active for admin/users/index & admin/users/create
+//so we dont have to type paths anymore :
+//modify MAIN admin layout : admin.blade.php : /  <a href="{{route('admin.users.create')}}">Create User</a>,
 
 
 
+//9//
+/*
+What happens when we klik create user:
+Our admin/users/create view have all the records in forms 
+Name, email, role,status,photo,password
+By kliking create user it all goes to store()
+in AdminUsersController
+1.There it gets checked by UserCheckRequest : 
+To check if each field is populated or shows error view
+2.All requests go to $input
+3.if() statement in variable $file = checks if we have chosen FILE for our photo
+3.1 $name captures time and original $file name
+3.2 in public folder we create new images folder
+and we save our $file 
+3.3 we make new record in photo table 
+in photo table we save that record under column 'file' as $name
+3.4we set users $input photo_id to be equal as newlycreated id from photos table
+4. Step 4 is representing whats happening after if()statement:
+we make sure that $input password is encrypted
+4.1saves new user in (user table) + belonging photo_id taken from photo table!!!!
+5. redirect to wherever
+
+
+if we dont have a photo only user will be created without photo_id
+*/
 
 
 
