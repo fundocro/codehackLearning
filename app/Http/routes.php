@@ -149,7 +149,25 @@ we make sure that $input password is encrypted
 if we dont have a photo only user will be created without photo_id
 */
 
+//10
+//displaying pictures in (Admin/Users/index) : of users that have pic stored 
 
+//11 
+//EDIT admin/users/edit  / update 
+//copy admin.user.create paste to admin.user.edit
+//in admin.users.index (users list ) add links to names send to edit and pass id<a href="{{}}">{{}}</a> 
+//modify main form to MODEL and PATCH ...+ more
+//'action'=>['AdminUserController@update',$user->id]
+//modif to form role_id
+//modif to AdminUsersController edit() : add roles same as we added users
+//php artisan route:list to see how to use URL path admin/users/4/edit
+//modif form is_active , erase defoult 0 and add null
+
+//12
+//ADDING PICTURE to left side of the name form IN EDIT MENU
+//create 2 bootstrap divs and indent existing code
+//copy <img> code from edit and paste into  admin.users.index to set picture with height 50
+//if picture present display it if not display /images/placeholder.jpg
 
 
 
