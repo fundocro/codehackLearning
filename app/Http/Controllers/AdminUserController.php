@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\User;
 use App\Role;
 use App\Http\Requests\UserCheckRequest;
+use App\Http\Requests\UserEditRequest;
 use App\Photo;
 
 class AdminUserController extends Controller
@@ -46,6 +47,9 @@ class AdminUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
+        //****************CREATE / STORE
+    
     public function store(UserCheckRequest $request)//   original Request $request
         //import class on top!!! 
         //use App\Http\Requests\UserCheckRequest;
@@ -62,11 +66,21 @@ class AdminUserController extends Controller
 //            return "photo exists";
 //        }//without ;
         
-        $input = $request->all();
-        //store everything from create forms
+        
+        if(trim($request->password)==''){
+            //we use trim to get rid of whitespace
+            $input=$request->except('password');
+            //if pass not present exclude passign password
+        }else{
+            
+            $input=$request->all();
+            //if password exist pass everything !
+            $input['password']=bcrypt($request->password);
+        }
+        
         
         if($file=$request->file('photo_id')){
-            //if we  HAVE photo in create form:
+            //if file (photo)is chosen
             //saving in $file : input from (file FORM) in admin/users/create
             $name=time().$file->getClientOriginalName();
             //getting name from file ,adding time to it and saving in variable $name
@@ -80,7 +94,7 @@ class AdminUserController extends Controller
         }
         //if we DONT  HAVE photo in create form:
         //we just create user without photo_id and without any record in photos table
-        $input['password']=bcrypt($request->password);
+        
         
         User::create($input);
         //saves new user in (user table) + belonging photo_id taken from photo table!!!!
@@ -130,9 +144,51 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    
+    //****************EDIT / UPDATE
+    
+    public function update(UserEditRequest $request, $id)
+        //import class on top  use App\Http\Requests\UserEditRequest;
+        //UserEditRequest validates all fields in update form except pass field
+        //we are updating , so pass already exists
     {
-        //
+        //return $request->all(); test 
+        
+        //get id from user that we are updating
+      
+        $user=User::findOrFail($id);
+        //find users id
+            
+                
+        if(trim($request->password)==''){
+            $input=$request->except('password');
+            //if pass not present exclude passign password
+            //pass everything else!
+        }else{
+            
+            $input=$request->all();
+            //if password exist pass everything !
+            $input['password']=bcrypt($request->password);
+        }
+        
+
+        if($file=$request->file('photo_id')){//if file is chosen
+            
+            $name = time().$file->getClientOriginalName();
+            
+            $file->move('images',$name);
+            
+            $photo=Photo::create(['file'=>$name]);
+            
+            $input['photo_id']=$photo->id;
+            //saving into Users
+            //make users photo is equal to photo id
+        }
+        
+        $user->update($input);
+        
+        return redirect('admin/users');
+        
     }
 
     /**

@@ -169,5 +169,18 @@ if we dont have a photo only user will be created without photo_id
 //copy <img> code from edit and paste into  admin.users.index to set picture with height 50
 //if picture present display it if not display /images/placeholder.jpg
 
+//13
+//MAKING AdminUsersController update() 
+//first we fixed some error rearding errors.blade.php 
+//we added 2 <div class="row"> ... check admin.users.edit
+//procedure for update is almost the same as in admin.users.create
+//except we had to make new validation request in php artisan named UserEditRequest
+//in new request we again copy/pasted from old req, all but password 
+//when updating user credentials we do not need to make new password each time
+//we imported use classes for new req on top 
 
+//14 ADMINusersConroller fix store() and Update() 
+//if() if password firled is empty to exclude it from saving empty hashes all the time!
 
+//15 SECURITY FOR ADMIN
+//
