@@ -20,17 +20,27 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+
+
+
+
 //1//
 //MAKE AUTH LOGIN PAGE / php artisan make:auth
 //chek if loged in user is admin
-Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
+
 //resource() crete all our routes for us
 //we need to make controler true gitbash
 //php artisan make:controller --resource AdminUserController
 //--resource will enable us CRUD methods usage
+Route::group(['middleware'=>'admin'], function(){
+    //make admin go true midleware
+    Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
+    
 
+
+});
 //php artisan route:list //chek it out
-//by defoult AdminuserController will route ro AdminuserController@index
+//by defoult AdminuserController will route ro AdminUserController@index
 
 //2//
 //GULP
@@ -56,7 +66,6 @@ Route::resource('admin/users','AdminUserController');//admin/users - rest contro
 //then we can just @yield('content') and reuse elsewhere
 //create file in: resources\views\layouts/admin.blade.php
 //copy paste code within file that we get from udemy (admin.blade.php zip)
-
 Route::get('/admin',function(){
     return view('admin.index');//folder.file
     //in index.php extend admin.php from layouts
@@ -183,4 +192,10 @@ if we dont have a photo only user will be created without photo_id
 //if() if password firled is empty to exclude it from saving empty hashes all the time!
 
 //15 SECURITY FOR ADMIN
-//
+//only loged in users wih role of admin and active shold be able to log
+//php artisan make:middleware Admin
+//register our new middleware in Kernel.php
+//make new ROUTE group and put inside: Route::resource('admin/users','AdminUserController');
+//mod the USER , make a func in class - isAdmin to check if user is admin , return true or false
+//mod middleware Admin, chek if user is loged in true Auth, if it is chek true our class
+//if it is admin if it is , next request, if it is not redirect to custom 404 page

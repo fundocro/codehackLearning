@@ -1,0 +1,59 @@
+[33mcommit f1b50a389da6fed5beaaf96a6903f7bf0400b4f7[m
+Author: Goran <goggy25@gmail.com>
+Date:   Wed Jun 21 14:15:21 2017 +0200
+
+    AdminUsersController -> edit() -> admin.users.edit , added photos in edit page
+
+[33mcommit 6eb81ae2a4f1677cbab979130f604440c8b9685a[m
+Author: Goran <goggy25@gmail.com>
+Date:   Sat Jun 17 15:45:19 2017 +0200
+
+    AdminUserController/store _ upload to users and photos working
+
+[33mcommit 855d3594af1f89606866a2d1adaf14ba5e78342d[m
+Author: Goran <goggy25@gmail.com>
+Date:   Wed Jun 14 17:32:13 2017 +0200
+
+    admin_users_create working without photos without photos WORKING
+
+[33mcommit 4ab5382723053e430879f7a410ca08257cef5fa0[m
+Author: Goran <goggy25@gmail.com>
+Date:   Sun Jun 11 18:56:11 2017 +0200
+
+    added password field, UserCheckRequest,new view:errors,@include()
+
+[33mcommit bba577051773c8f82052349d7ce21321a4ddd59a[m
+Author: Goran <goggy25@gmail.com>
+Date:   Wed Jun 7 12:23:39 2017 +0200
+
+    added columns(Email,Role,Status) to admin/users/create view
+
+[33mcommit 7f564f3f18881f3568fb53f61741c9903d277808[m
+Author: Goran <goggy25@gmail.com>
+Date:   Tue Jun 6 11:20:50 2017 +0200
+
+    installed laravelcollective/html /  added form to admin.users.create
+
+[33mcommit 9532b4354c2f5a330ec0cb20c98c2b22fc1614db[m
+Author: Goran <goggy25@gmail.com>
+Date:   Tue May 30 15:30:58 2017 +0200
+
+    gulp.js rearange js files order
+
+[33mcommit c58b86b8b2e03c37f2ebff4ea488a3bdf8fc43ad[m
+Author: Goran <goggy25@gmail.com>
+Date:   Tue May 30 15:09:56 2017 +0200
+
+    Master Admin Page /node.js install / Gulp install / stylechages /
+
+[33mcommit e9e5e171ca236d6be89efa9096e9804515d52cf5[m
+Author: Goran <goggy25@gmail.com>
+Date:   Sat May 27 12:32:31 2017 +0200
+
+    added roles table / AdminUserController
+
+[33mcommit 5dc6356480f81726e7c4acfb5a8e8104005df924[m
+Author: Goran <goggy25@gmail.com>
+Date:   Fri May 26 12:47:18 2017 +0200
+
+    Admin Folder 26/5/17
