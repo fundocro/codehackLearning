@@ -8,6 +8,6 @@
 @section('content')
  
  
-    <h1>Admin MASTER</h1>
+    <h1>Admin PREVIEW</h1>
  
 @stop

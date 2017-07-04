@@ -15,13 +15,13 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
-            if(Auth::user()->isAdmin()){
+        if(Auth::check()){//if user is loged in
+            if(Auth::user()->isAdmin()){//is admin is in User model
                 return $next($request);
             }   
         }
         //return redirect('/home');
-        return redirect('/');//returns 404 error that we made
+        return redirect('/'); //return to welcome.blade
         //return $next($request);
     }
 }

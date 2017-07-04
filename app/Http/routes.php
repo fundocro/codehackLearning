@@ -32,13 +32,14 @@ Route::get('/home', 'HomeController@index');
 //we need to make controler true gitbash
 //php artisan make:controller --resource AdminUserController
 //--resource will enable us CRUD methods usage
+
+
 Route::group(['middleware'=>'admin'], function(){
     //make admin go true midleware
     Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
-    
-
-
 });
+
+
 //php artisan route:list //chek it out
 //by defoult AdminuserController will route ro AdminUserController@index
 
@@ -199,3 +200,8 @@ if we dont have a photo only user will be created without photo_id
 //mod the USER , make a func in class - isAdmin to check if user is admin , return true or false
 //mod middleware Admin, chek if user is loged in true Auth, if it is chek true our class
 //if it is admin if it is , next request, if it is not redirect to custom 404 page
+//making loged user name apear also in adminMASTER PAGE {{ Auth::user()->name }} copy/paste from app.blade to admin.blade
+
+//16 DELETING USERS
+//make another form-group in edit,blade,php , make it for DELETE
+//mod AdminUserController destroy() : User::findOrFail($id)->delete();

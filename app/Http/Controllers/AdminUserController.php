@@ -99,7 +99,7 @@ class AdminUserController extends Controller
         User::create($input);
         //saves new user in (user table) + belonging photo_id taken from photo table!!!!
         
-        return redirect('admin/users/create');
+        return redirect('admin/users');
         
         
         
@@ -200,5 +200,8 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         //
+        User::findOrFail($id)->delete();
+        
+        return redirect('/admin/users');
     }
 }
