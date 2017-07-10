@@ -34,23 +34,40 @@
                             
                             <td><a href="{{route('admin.users.edit', $x->id)}}">{{$x->name}}</a></td>
 
-                            
                             <td>{{$x->email}}</td>
                             <td>{{$x->role->name}}</td>
                             <td>{{$x->is_active==1 ? 'Active' : 'NotActive' }}</td>
                             <td>{{$x->created_at->diffForHumans()}}</td>
                             <td>{{$x->updated_at->diffForHumans()}}</td>
                         </tr>
-                    @endforeach
-
+                    @endforeach        
+        
                 @endif
-              
+            
+            
+
+             
+            
                    
         </tbody>
+
+        
     </table>
 
-    
+
+    <div class="bg-danger">
+
+
+           @if(Session::has('deleted_user'))
+            
+                <p style="font-size:large">{{session('deleted_user')}}</p>
+
+            @endif
         
+
+    </div>
+
+         
 
     
     

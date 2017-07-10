@@ -198,10 +198,15 @@ if we dont have a photo only user will be created without photo_id
 //register our new middleware in Kernel.php
 //make new ROUTE group and put inside: Route::resource('admin/users','AdminUserController');
 //mod the USER , make a func in class - isAdmin to check if user is admin , return true or false
-//mod middleware Admin, chek if user is loged in true Auth, if it is chek true our class
+//mod middleware Admin, chek if user is loged in true Auth, if it is chek true our class in user
 //if it is admin if it is , next request, if it is not redirect to custom 404 page
 //making loged user name apear also in adminMASTER PAGE {{ Auth::user()->name }} copy/paste from app.blade to admin.blade
+//adding more security so admins with active staus can do changes
+//AuthController set redirect to admin if user is admin and is active
 
 //16 DELETING USERS
 //make another form-group in edit,blade,php , make it for DELETE
 //mod AdminUserController destroy() : User::findOrFail($id)->delete();
+//make notification whenever user has been deleted:
+//we will use sessions in AdminUserController() and make <p></p> in admin.users.index
+//also deleting image from public/images folder  unlink()
