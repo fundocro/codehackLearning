@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Post;
+
 class AdminPostController extends Controller
 {
     /**
@@ -15,7 +17,8 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index');
+        $post=Post::all();
+        return view('admin.posts.index',compact('post'));
     }
 
     /**
