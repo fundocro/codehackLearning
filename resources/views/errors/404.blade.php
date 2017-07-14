@@ -1,1 +1,4 @@
-<h1>Error 404 Is probably your fault lol </h1>
+@extends('layouts.app')
+@section('content')
+<h1 class="text-center">Oops no page available</h1>
+@stop

@@ -37,6 +37,7 @@ Route::get('/home', 'HomeController@index');
 Route::group(['middleware'=>'admin'], function(){
     //make admin go true midleware
     Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
+    Route::resource('admin/posts','AdminPostController');
 });
 
 
@@ -202,9 +203,10 @@ if we dont have a photo only user will be created without photo_id
 //if it is admin if it is , next request, if it is not redirect to custom 404 page
 //making loged user name apear also in adminMASTER PAGE {{ Auth::user()->name }} copy/paste from app.blade to admin.blade
 //adding more security so admins with active staus can do changes
-//AuthController set redirect to admin if user is admin and is active
+//AuthController set redirect from default : protected $redirectTo = '/'; goes to root  - welcome.blade
+// wea make it to  protected $redirectTo = '/admin'; so admin who is active go directly to admin page
 
-//16 DELETING USERS
+//16 DELETING USERS / Images
 //make another form-group in edit,blade,php , make it for DELETE
 //mod AdminUserController destroy() : User::findOrFail($id)->delete();
 //make notification whenever user has been deleted:
