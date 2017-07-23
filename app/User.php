@@ -27,11 +27,11 @@ class User extends Authenticatable
     
     public function role(){
         //seting relation user-role
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('App\Role');//reverse one to one
     }//NO ; HERE!
     
     public function photo(){
-        return $this->belongsTo('App\Photo');
+        return $this->belongsTo('App\Photo');//reverse one to one
     }
     
 //not neaded anymore!!!   
@@ -48,5 +48,14 @@ class User extends Authenticatable
         }
         return false;
     }
+    
+    
+    public function post(){
+        return $this->hasMany('App\Post');//one to many
+    }
+    
+    
+    
+    
     
 }

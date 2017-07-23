@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 use App\Post;
 
+use Illuminate\Support\Facades\Auth;
+
+use App\Photo;
+
 class AdminPostController extends Controller
 {
     /**
@@ -37,9 +41,40 @@ class AdminPostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\PostCheckRequest $request)
     {
-        //
+        //we make new request for validation
+        // import on top or manualy here in function
+        //storing to DB all fields from admin/post/create form
+        
+        $input=$request->all();
+        // import Auth on top
+        $user=Auth::user();
+        
+        if($file=$request->file('photo_id')){
+            
+            $name = time().$file->getClientOriginalName();
+            
+            $file->move('images',$name);
+            
+            $photo = Photo::create(['file'=>$name]);//file indicated column name in photos table
+            
+            $input['photo_id']=$photo->id;
+        }
+        
+            $user->post()->create($input);//goes true loged in user!!!!
+        
+//        Post::create($input); 
+//        this wont work because it must go true user to 
+//        figure out wich users is making the post
+//        it creates user_id 0 in posts table and fatal error
+        
+        return redirect('admin/posts');
+        
+        //return $request->all();
+        
+        
+        
     }
 
     /**
@@ -48,6 +83,9 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+    
+    
     public function show($id)
     {
         //

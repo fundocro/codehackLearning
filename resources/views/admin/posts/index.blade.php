@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
- 
- 
+
 @section('content')
  
  
@@ -10,11 +9,12 @@
     <table class="table">
             <thead>
               <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Category</th>
+                <th>Photo</th>
                 <th>Title</th>
                 <th>Body</th>
-                <th>User_id</th>
-                <th>Category_id</th>
-                <th>Photo_id</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
               </tr>
@@ -24,17 +24,17 @@
                 @if($post)
                     @foreach($post as $postData)
                       <tr>
-                        <td>{{$postData->title}}</td>
-                        <td>{{$postData->body}}</td>
-                        <td>{{$postData->user_id}}</td>
+                        <td>{{$postData->id}}</td>
+                        <td>{{$postData->user->name}}</td>
                         <td>{{$postData->category_id}}</td>
                         <td>{{$postData->photo_id}}</td>
-                        <td>{{$postData->created_at}}</td>
-                        <td>{{$postData->updated_at}}</td>  
+                        <td>{{$postData->title}}</td>
+                        <td>{{$postData->body}}</td>            
+                        <td>{{$postData->created_at->diffForHumans()}}</td>
+                        <td>{{$postData->updated_at->diffForHumans()}}</td>  
                       </tr>
                     @endforeach
                 @endif
-                {{No data}}
 
             </tbody>
     </table>
