@@ -48,15 +48,17 @@ class AdminPostController extends Controller
         //storing to DB all fields from admin/post/create form
         
         $input=$request->all();
+        //$request-all() from post create form
         // import Auth on top
         $user=Auth::user();
         
         if($file=$request->file('photo_id')){
+             
             
+                       	                       
             $name = time().$file->getClientOriginalName();
             
             $file->move('images',$name);
-            
             $photo = Photo::create(['file'=>$name]);//file indicated column name in photos table
             
             $input['photo_id']=$photo->id;
@@ -67,10 +69,9 @@ class AdminPostController extends Controller
 //        Post::create($input); 
 //        this wont work because it must go true user to 
 //        figure out wich users is making the post
-//        it creates user_id 0 in posts table and fatal error
+//        otherwise it creates user_id 0 in posts table and fatal error
         
         return redirect('admin/posts');
-        
         //return $request->all();
         
         

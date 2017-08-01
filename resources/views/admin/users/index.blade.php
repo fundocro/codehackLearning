@@ -30,7 +30,7 @@
                         <tr>
                             <td>{{$x->id}}</td>
                             
-                            <td><img height="50" src="/images/{{$x->photo ? $x->photo->file : 'palcehold.jpg'}}" alt=""></td>
+                            <td><img height="50" src="/images/{{$x->photo ? $x->photo->file : 'placehold.jpg'}}" alt=""></td>
                             
                             <td><a href="{{route('admin.users.edit', $x->id)}}">{{$x->name}}</a></td>
 

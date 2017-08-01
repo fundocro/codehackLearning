@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 {!!Form::label('category_id','Category:')!!}
-                {!!Form::select('category_id',array(''=>'options'),null,['class'=>'form-control'])!!}
+                {!!Form::select('category_id',array(1=>'PHP',0=>'JavaScript'),null,['class'=>'form-control'])!!}
             </div>
 
             <div class="form-group">
@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-group">
-                {!!Form::submit('Create User',['class'=>'btn btn-primary'])!!}
+                {!!Form::submit('Create Post',['class'=>'btn btn-primary'])!!}
             </div>
 
     {!!Form::close()!!}

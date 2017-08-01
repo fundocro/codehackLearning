@@ -25,9 +25,11 @@
                     @foreach($post as $postData)
                       <tr>
                         <td>{{$postData->id}}</td>
-                        <td>{{$postData->user->name}}</td>
+                        <td>{{$postData->user->name}}</td>{{-- user is a relation--}}
                         <td>{{$postData->category_id}}</td>
-                        <td>{{$postData->photo_id}}</td>
+                        
+                <td><img height="80" src="/images/{{$postData->photo ? $postData->photo->file : 'placehold.jpg'}}" alt=""></td>
+                          
                         <td>{{$postData->title}}</td>
                         <td>{{$postData->body}}</td>            
                         <td>{{$postData->created_at->diffForHumans()}}</td>
