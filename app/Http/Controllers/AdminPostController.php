@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Photo;
 
+ use App\Category;
+
 class AdminPostController extends Controller
 {
     /**
@@ -32,7 +34,10 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $category=Category::lists('name','id')->all();
+        // add Category on top
+        //must be name first then id 
+        return view('admin.posts.create',compact('category'));
     }
 
     /**

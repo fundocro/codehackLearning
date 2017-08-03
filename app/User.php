@@ -27,7 +27,8 @@ class User extends Authenticatable
     
     public function role(){
         //seting relation user-role
-        return $this->belongsTo('App\Role');//reverse one to one
+        return $this->belongsTo('App\Role');//reverse one to one (user contains f key from role)
+                                            //user acess role true f key that he contains in table
     }//NO ; HERE!
     
     public function photo(){

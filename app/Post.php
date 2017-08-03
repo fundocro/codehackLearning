@@ -12,15 +12,15 @@ class Post extends Model
     
     
     public function user(){
-       return $this->belongsTo('App\User'); //reverse one to one
+       return $this->belongsTo('App\User'); //reverse one to one (post table contains foreighn key for user)
     }
     
     public function photo(){
-        return $this->belongsTo('App\Photo');//reverse one to one
+        return $this->belongsTo('App\Photo');//reverse one to one (post table contains foreighn key for photo)
     }
     
     public function category(){
-        return $this->belongsTo('App\Category');//reverse one to one
+        return $this->belongsTo('App\Category');//reverse one to one (post table contains foreighn key for category)
     }
     
 }

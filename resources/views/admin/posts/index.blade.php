@@ -26,7 +26,7 @@
                       <tr>
                         <td>{{$postData->id}}</td>
                         <td>{{$postData->user->name}}</td>{{-- user is a relation--}}
-                        <td>{{$postData->category_id}}</td>
+                        <td>{{$postData->category ? $postData->category->name : 'Uncategorised'}}</td>
                         
                 <td><img height="80" src="/images/{{$postData->photo ? $postData->photo->file : 'placehold.jpg'}}" alt=""></td>
                           

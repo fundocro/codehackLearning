@@ -36,8 +36,9 @@ class AdminUserController extends Controller
     public function create()
     {
         //import Role on top!
-        $roles=Role::lists('name','id')->all();
-        //from roles table getting/converting to array name, id 
+        $roles=Role::lists('name','id')->all(); 
+        //must be name first then id so we nont display numbers but names 
+        //from roles table getting/converting to array (name, id ) 
         //true compact() sending name and id to view/form/role
         return view('admin.users.create',compact('roles'));
     }
