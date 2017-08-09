@@ -30,8 +30,15 @@
                         
                 <td><img height="80" src="/images/{{$postData->photo ? $postData->photo->file : 'placehold.jpg'}}" alt=""></td>
                           
-                        <td>{{$postData->title}}</td>
-                        <td>{{$postData->body}}</td>            
+                        <td><a href="{{route('admin.posts.edit',$postData->id)}}">{{$postData->title}}</a></td>
+                          
+                {{-- ($postData->id) finds id  / pass id to  / admin.posts.edit --}}
+                {{-- in admin.posts.edit / form uses that id and refers to AdminPostController  --}}
+                {{-- AdminPostController uses that id to find matching post and returns back belonging values true compact() --}}
+                          
+                          
+                        <td>{{str_limit($postData->body,10)}}</td> 
+                            {{--HELPER FUNCTIONS https://laravel.com/docs/4.2/helpers          --}}
                         <td>{{$postData->created_at->diffForHumans()}}</td>
                         <td>{{$postData->updated_at->diffForHumans()}}</td>  
                       </tr>

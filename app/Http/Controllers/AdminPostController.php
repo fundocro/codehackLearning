@@ -57,19 +57,23 @@ class AdminPostController extends Controller
         // import Auth on top
         $user=Auth::user();
         
+     
         if($file=$request->file('photo_id')){
-             
-            
-                       	                       
+
             $name = time().$file->getClientOriginalName();
-            
+
             $file->move('images',$name);
             $photo = Photo::create(['file'=>$name]);//file indicated column name in photos table
-            
+
             $input['photo_id']=$photo->id;
-        }
+            
+           
+        } 
+ 
+
+
         
-            $user->post()->create($input);//goes true loged in user!!!!
+        $user->post()->create($input);//goes true loged in user!!!!
         
 //        Post::create($input); 
 //        this wont work because it must go true user to 
@@ -105,7 +109,15 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.posts.edit');
+//               admin.post.index : ($postData->id) finds id  / pass id to  / admin.posts.edit
+//                admin.posts.edit: in admin.posts.edit / form uses that id and refers to AdminPostController
+//             AdminPostController: uses that id to find matching post and returns back belonging values true compact()
+                          
+        
+        $posts=Post::findOrFail($id);
+        $category=Category::lists('name','id')->all();
+        
+        return view('admin.posts.edit',compact('posts','category'));
     }
 
     /**
@@ -117,7 +129,23 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return $request->all();
+        $input=$request->all();
+        
+        
+        if($file=$request->file('photo_id')){
+
+            $name = time().$file->getClientOriginalName();
+
+            $file->move('images',$name);
+            $photo = Photo::create(['file'=>$name]);//file indicated column name in photos table
+
+            $input['photo_id']=$photo->id;
+        } 
+ 
+        Auth::user()->post()->whereId($id)->first()->update($input);
+        
+        return redirect('admin/posts');
     }
 
     /**
@@ -128,6 +156,21 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete post + image 
+        //get post under that id 
+        //delete
+        
+        $postDelete=Post::findOrFail($id);
+ 
+        unlink(public_path() . "/images/" . $postDelete->photo->file);
+        
+        $postDelete->delete();
+        
+        return redirect('admin/posts');
+        
+
+        
+        
+        
     }
 }

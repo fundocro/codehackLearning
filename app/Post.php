@@ -23,4 +23,5 @@ class Post extends Model
         return $this->belongsTo('App\Category');//reverse one to one (post table contains foreighn key for category)
     }
     
+
 }
