@@ -167,9 +167,7 @@ class AdminPostController extends Controller
         $postDelete->delete();
         
         return redirect('admin/posts');
-        
 
-        
         
         
     }

@@ -38,6 +38,7 @@ Route::group(['middleware'=>'admin'], function(){
     //make admin go true midleware
     Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
     Route::resource('admin/posts','AdminPostController');
+    Route::resource('admin/categories','AdminCategoryController');
 });
 
 

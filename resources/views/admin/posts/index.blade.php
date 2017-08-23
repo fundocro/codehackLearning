@@ -37,7 +37,7 @@
                 {{-- AdminPostController uses that id to find matching post and returns back belonging values true compact() --}}
                           
                           
-                        <td>{{str_limit($postData->body,10)}}</td> 
+                        <td>{{str_limit($postData->body,10)}}</td> {{--shows only 10characters of body text--}}
                             {{--HELPER FUNCTIONS https://laravel.com/docs/4.2/helpers          --}}
                         <td>{{$postData->created_at->diffForHumans()}}</td>
                         <td>{{$postData->updated_at->diffForHumans()}}</td>  
