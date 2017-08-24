@@ -11,6 +11,9 @@
     
     <div class="col-sm-9">{{--picture sm-9 --}}
         <img height="250" src="/images/{{$posts->photo->file}}" alt="" >
+        {{--$posts comes from AdminPostsController--}}
+        {{--  photo comes from Post model--}}
+        {{-- file is a part of photo--}}
         
     </div>
     
