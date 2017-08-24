@@ -21,7 +21,7 @@
             @foreach($category as $categoryLoop)
               <tr>
                 <td>{{$categoryLoop->id}}</td>
-                <td>{{$categoryLoop->name}}</td>
+                <td><a href="{{route('admin.categories.edit', $categoryLoop->id )}}">{{$categoryLoop->name}}</a></td>
                 <td>{{$categoryLoop->created_at ? $categoryLoop->created_at->diffForHumans() : 'No Date'}}</td>
               </tr>
             @endforeach
