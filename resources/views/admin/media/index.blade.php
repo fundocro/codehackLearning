@@ -24,6 +24,14 @@
                 <td><img height="100" src="/images/{{$photoL->file}}" alt=""></td>
                 <td>{{$photoL->created_at ? $photoL->created_at : 'Unknow Time/Date'}}</td>
                   
+                <td>
+                
+                    {!!Form::open(['method'=>'DELETE','action'=>['Media@destroy',$photoL->id]])!!}
+                        {!!Form::submit('Delete',['class'=>'btn btn-danger'])!!}
+                    {!!Form::close()!!}
+                    
+                </td>
+                  
               </tr>
             @endforeach        
             </tbody>
