@@ -39,6 +39,12 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/users','AdminUserController');//admin/users - rest controlls the controller
     Route::resource('admin/posts','AdminPostController');
     Route::resource('admin/categories','AdminCategoriesController');
+    Route::resource('admin/media','Media');
+    
+    //Route::get('admin/media/upload',['as'=>'admin.media.upload', 'uses'=>'Media@create']);
+    //if we want custom url stuff
+    
+    
 });
 
 
