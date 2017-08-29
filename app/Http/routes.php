@@ -41,6 +41,9 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/categories','AdminCategoriesController');
     Route::resource('admin/media','Media');
     
+    Route::resource('admin/comments','PostCommentController');
+    Route::resource('admin/comments_r/replies','CommentReplieController');
+    
     //Route::get('admin/media/upload',['as'=>'admin.media.upload', 'uses'=>'Media@create']);
     //if we want custom url stuff
     

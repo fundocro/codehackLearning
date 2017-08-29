@@ -23,5 +23,8 @@ class Post extends Model
         return $this->belongsTo('App\Category');//reverse one to one (post table contains foreighn key for category)
     }
     
+    public function comment(){
+        return $this->hasMany('App\Comment');// one to many / Post hasMany Cooments
+    }
 
 }

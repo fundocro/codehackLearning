@@ -24,9 +24,10 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             //used to delete all posts if we delete user
             //make sure that id on user table and user_id on posts table are of same type!
-            //index()->unsigned()->nullable()
+            //index()->unsigned()->nullable() (CHECK DATABASE NOT MIGRATIONS!)
             
             //used to delete related users
+       
             
             
         });
