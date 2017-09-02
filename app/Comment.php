@@ -9,6 +9,6 @@ class Comment extends Model
     protected $fillable=['post_id','is_active','body','email','author'];
     
     public function replies(){
-        return $this->hasMany('App\CommentReplie');//Comment hasMany replies
+        return $this->hasMany('App\CommentReplie');//Comment hasMany replies/ onetomany
     }
 }
