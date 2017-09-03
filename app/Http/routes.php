@@ -21,8 +21,9 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 
+// Route::get('/post/{id}','AdminPostController@post'); plain way
 
-
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']); //check php artisan route:list
 
 //1//
 //MAKE AUTH LOGIN PAGE / php artisan make:auth
