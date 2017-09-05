@@ -53,18 +53,19 @@
                 <div class="form-group">
                     {!!Form::submit('Edit Post',['class'=>'btn btn-primary'])!!}
                 </div>
-
-
-                {!!Form::open(['method'=>'DELETE','action'=>['AdminPostController@destroy',$posts->id]])!!}
-                    <div class="form-group">
-                            {!!Form::submit('Delete post',['class'=>'btn btn-danger'])!!}
-                    </div>
-                {!!Form::close()!!}
-
-
-
+        
+    
 
         {!!Form::close()!!}
+        
+        
+{{--        PUT DELETE BUTTON OUTSIDE MAIN FORM IF IT GIVES PROBLEMS--}}
+        
+             {!!Form::open(['method'=>'DELETE','action'=>['AdminPostController@destroy',$posts->id]])!!}
+            <div class="form-group">
+                {!!Form::submit('Delete Post',['class'=>'btn btn-danger'])!!}
+            </div>
+            {!!Form::close()!!}
         
 
     </div>{{--close second sm-9--}}

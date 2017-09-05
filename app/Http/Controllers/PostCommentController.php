@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Comment;
+
+use Illuminate\Support\Facades\Auth;
+
+
 class PostCommentController extends Controller
 {
     /**
@@ -36,7 +41,37 @@ class PostCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+        
+        //we must submit all required data to comments table!
+        //since we do not have forms to fill for : post_id, /author / email /body /photo... we must do it here :
+        // check Comment model for fillabels
+        
+        $user=Auth::user();//to get loged in user, only loged in users will be able to coment
+                            // IMPORT AUTH
+        
+        //comments form : post_id,is_active,author,body,email
+        $data=[
+            'post_id' => $request->post_id, //obtained from form true hidden <input>
+            'author'  => $user->name,
+            'email'   => $user->email,
+            'photo'   => $user->photo->file,
+            // 'photo' added manually to form 
+            //to avoid referesh and loosing all tale data we:
+            //php artisan make:migration add-photo --table comments
+            
+            'body'    => $request->body
+        ];
+        
+
+        
+        Comment::create($request->$data); //import on top!
+        
+                //flashing
+        $request->session()->flash('comment_message','Your message has been submitted');
+        return redirect()->back();
+        
+
     }
 
     /**

@@ -22,7 +22,8 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="/images/{{$post->photo->file}}" alt="">
+                <img  height="200" src="/images/{{$post->photo->file}}" alt="">
+
 
               
                
@@ -34,17 +35,34 @@
 
                 <hr>
 
+                @if(Session::has('comment_message'))
+                    {{session('comment_message')}}
+                @endif
+
+
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    {!!Form::open(['method'=>'POST','action'=>'PostCommentController@store'])!!}
+                    
+                    {{--   OBTAINING ID DIFERENT WAY--}}
+                    
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                    
+                        
+                            <div class="form-group">
+                                {!!Form::label('body','*')!!}
+                                {!!Form::textarea('body',null,['class'=>'form-control','rows'=>3])!!}
+                            </div>
+                    
+                            <div class="form-group">
+                                {!!Form::submit('Post Comment',['class'=>'btn btn-primary'])!!}
+                            </div>
+                    
+                    {!!Form::close()!!}
+                    
                 </div>
 
                 <hr>
