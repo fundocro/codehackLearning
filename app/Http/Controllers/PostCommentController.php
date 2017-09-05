@@ -50,22 +50,23 @@ class PostCommentController extends Controller
         $user=Auth::user();//to get loged in user, only loged in users will be able to coment
                             // IMPORT AUTH
         
-        //comments form : post_id,is_active,author,body,email
+        //comments form : post_id,is_active,author,body,email  / photo manually added
         $data=[
             'post_id' => $request->post_id, //obtained from form true hidden <input>
             'author'  => $user->name,
             'email'   => $user->email,
             'photo'   => $user->photo->file,
-            // 'photo' added manually to form 
+            // 'photo' added manually to table
             //to avoid referesh and loosing all tale data we:
-            //php artisan make:migration add-photo --table comments
+            //php artisan make:migration add_photo_collumn_commnts --table comments
             
             'body'    => $request->body
         ];
         
 
         
-        Comment::create($request->$data); //import on top!
+        Comment::create($data); //comment import on top!
+        
         
                 //flashing
         $request->session()->flash('comment_message','Your message has been submitted');
