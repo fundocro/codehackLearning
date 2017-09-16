@@ -11,4 +11,8 @@ class Comment extends Model
     public function replies(){
         return $this->hasMany('App\CommentReplie');//Comment hasMany replies/ onetomany
     }
+    
+    public function post(){
+        return $this->belongsTo('App\Post');
+    }
 }

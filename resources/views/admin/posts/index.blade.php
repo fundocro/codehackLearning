@@ -13,8 +13,10 @@
                 <th>User</th>
                 <th>Category</th>
                 <th>Photo</th>
-                <th>Title</th>
+                <th>Title/Edit</th>
                 <th>Body</th>
+                <th></th>
+                <th></th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
               </tr>
@@ -37,8 +39,12 @@
                 {{-- AdminPostController uses that id to find matching post and returns back belonging values true compact() --}}
                           
                           
-                        <td>{{str_limit($postData->body,10)}}</td> {{--shows only 10characters of body text--}}
-                            {{--HELPER FUNCTIONS https://laravel.com/docs/4.2/helpers          --}}
+                        <td>{{str_limit($postData->body,10)}}</td> 
+                          {{--shows only 10characters of body text--}}
+                            {{--HELPER FUNCTIONS https://laravel.com/docs/4.2/helpers --}}
+                       
+                        <td><a href="{{route('home.post',$postData->id)}}">View Post</a></td>
+                        <td><a href="{{route('admin.comments.index')}}">View Comments</a></td>
                         <td>{{$postData->created_at->diffForHumans()}}</td>
                         <td>{{$postData->updated_at->diffForHumans()}}</td>  
                       </tr>

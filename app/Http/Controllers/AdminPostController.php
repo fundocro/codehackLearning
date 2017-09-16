@@ -178,8 +178,10 @@ class AdminPostController extends Controller
         
         $post=Post::findOrFail($id);
         
+        $comments=$post->comment()->whereIsActive(1)->get(); 
+        // passing only comments that are aproved(table isactive ==1)
         
-        return view('post',compact('post'));// sends $post to public post view
+        return view('post',compact('post','comments'));// sends $post to public post view
         
     }
     

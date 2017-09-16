@@ -20,7 +20,9 @@ class PostCommentController extends Controller
      */
     public function index()
     {
-        return view('admin.comments.index');
+        $comments=Comment::all();
+        
+        return view('admin.comments.index',compact('comments'));
     }
 
     /**
@@ -53,9 +55,9 @@ class PostCommentController extends Controller
         //comments form : post_id,is_active,author,body,email  / photo manually added
         $data=[
             'post_id' => $request->post_id, //obtained from form true hidden <input>
-            'author'  => $user->name,
-            'email'   => $user->email,
-            'photo'   => $user->photo->file,
+            'author'  => $user->name, //obtained from logged in user!!!
+            'email'   => $user->email,//obtained from logged in user!!!
+            'photo'   => $user->photo->file,//obtained from logged in user!!!
             // 'photo' added manually to table
             //to avoid referesh and loosing all tale data we:
             //php artisan make:migration add_photo_collumn_commnts --table comments
@@ -106,7 +108,8 @@ class PostCommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comment::findOrFail($id)->update($request->all());
+        return redirect('/admin/comments');
     }
 
     /**
@@ -117,6 +120,9 @@ class PostCommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::findOrFail($id)->delete();
+        
+        return redirect()->back();
+        
     }
 }
