@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\CommentReplie;
+
+use Illuminate\Support\Facades\Auth;
+
 class CommentReplieController extends Controller
 {
     /**
@@ -39,6 +43,30 @@ class CommentReplieController extends Controller
         //
     }
 
+    
+        public function createReplyStore(Request $request)
+    {
+        //return 'it works';
+        $user=Auth::user();
+        
+    
+        $data=[
+            'comment_id' => $request->comment_id, //obtained from form true hidden <input>
+            'author'  => $user->name, //obtained from logged in user!!!
+            'email'   => $user->email,//obtained from logged in user!!!
+            'photo'   => $user->photo->file,//obtained from logged in user!!!   
+            'body'    => $request->body
+        ];
+        
+
+        
+        CommentReplie::create($data); //comment import on top!
+        
+        
+                //flashing
+        $request->session()->flash('comment_reply','Your reply has been submitted');
+        return redirect()->back();    
+    }
     /**
      * Display the specified resource.
      *
@@ -72,7 +100,9 @@ class CommentReplieController extends Controller
     {
         //
     }
-
+    
+    
+        
     /**
      * Remove the specified resource from storage.
      *

@@ -52,6 +52,16 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 
+//
+Route::group(['middleware'=>'admin'], function(){
+    //this is for security so loged in users can reply a comment
+
+    //custom method for replaying comments
+    Route::post('comment/reply','CommentReplieController@createReplyStore');
+    
+    
+});
+
 //php artisan route:list //chek it out
 //by defoult AdminuserController will route ro AdminUserController@index
 
