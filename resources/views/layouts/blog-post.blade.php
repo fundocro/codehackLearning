@@ -148,11 +148,11 @@
 
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
-    
 
     <!-- Bootstrap Core JavaScript original blog-post -->
     <!-- <script src="js/bootstrap.min.js"></script> -->
-
+@yield('scripts')
+    
 </body>
 
 </html>

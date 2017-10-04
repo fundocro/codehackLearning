@@ -116,8 +116,14 @@
                                     </h4>
 
                                     <p>{{$reply->body}}</p>
+                                    
 
-                                </div>
+                                <div class="comment-reply-container">
+                                    
+                                    <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+                               
+                                    <div class="comment-reply">
+                                    
 
                                 {!!Form::open(['method'=>'POST','action'=>'CommentReplieController@createReplyStore'])!!}
 
@@ -131,25 +137,37 @@
                                         <div class="form-group">
                                             {!!Form::submit('Submit Yor Reply',['class'=>'btn btn-primary'])!!}
                                         </div>
+                                        
                                         @if(Session::has('comment_reply'))
                                             {{session('comment_reply')}}
                                         @endif
                                 {!!Form::close()!!}
-
+                                    </div>
+                                </div> 
+                                    
                             @endforeach
                     @endif
                                     
 
                             </div>
-                        <!-- End Nested Comment -->
+                        
                         </div>
                     </div>
-
+                </div>        
+<!-- End Nested Comment -->
                     @endforeach
 
                 @endif
 
-
-
-
 @stop
+
+
+@section('scripts')
+    <script>
+        $(".comment-reply-container .toggle-reply").click(function(){
+            $(this).next().slideToggle("slow");
+        });                
+    </script>   
+@stop
+
+                        
