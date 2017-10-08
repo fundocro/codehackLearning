@@ -10,6 +10,8 @@ use App\CommentReplie;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Comment;
+
 class CommentReplieController extends Controller
 {
     /**
@@ -75,7 +77,11 @@ class CommentReplieController extends Controller
      */
     public function show($id)
     {
-        //
+       $comment = Comment::findOrFail($id);
+        
+        $replies=$comment->replies;
+        
+        return view('admin.comments.replies.show',compact('replies'));
     }
 
     /**

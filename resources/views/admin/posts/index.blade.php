@@ -45,6 +45,7 @@
                        
                         <td><a href="{{route('home.post',$postData->id)}}">View Post</a></td>
                         <td><a href="{{route('admin.comments.index')}}">View Comments</a></td>
+            
                         <td>{{$postData->created_at->diffForHumans()}}</td>
                         <td>{{$postData->updated_at->diffForHumans()}}</td>  
                       </tr>

@@ -15,6 +15,7 @@
                 <th>Email</th>
                 <th>Post Title</th>
                 <th>Comments</th>
+                  <th></th>
               </tr>
             </thead>
         @foreach($comments as $comment)
@@ -25,7 +26,8 @@
                 <td>{{$comment->author}}</td>
                 <td>{{$comment->email}}</td>
                 <td><a href="{{route('home.post',$comment->post->id)}}">{{$comment->post->title}}</a></td>
-                <td>{{$comment->body}}</td>  
+                <td>{{$comment->body}}</td> 
+                <td><a href="{{route('admin.comments.replies.show',$comment->id)}}">View Reply</a></td>
                   
                 <td>
                     @if($comment->is_active==1)  

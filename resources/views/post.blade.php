@@ -125,23 +125,23 @@
                                     <div class="comment-reply">
                                     
 
-                                {!!Form::open(['method'=>'POST','action'=>'CommentReplieController@createReplyStore'])!!}
+                                        {!!Form::open(['method'=>'POST','action'=>'CommentReplieController@createReplyStore'])!!}
 
-                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">        
+                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">        
 
-                                        <div class="form-group">
-                                            {!!Form::label('body','*')!!}
-                                            {!!Form::textarea('body',null,['class'=>'form-control','rows'=>2])!!}
-                                        </div>
+                                                <div class="form-group">
+                                                    {!!Form::label('body','*')!!}
+                                                    {!!Form::textarea('body',null,['class'=>'form-control','rows'=>2])!!}
+                                                </div>
 
-                                        <div class="form-group">
-                                            {!!Form::submit('Submit Yor Reply',['class'=>'btn btn-primary'])!!}
-                                        </div>
-                                        
-                                        @if(Session::has('comment_reply'))
-                                            {{session('comment_reply')}}
-                                        @endif
-                                {!!Form::close()!!}
+                                                <div class="form-group">
+                                                    {!!Form::submit('Submit Yor Reply',['class'=>'btn btn-primary'])!!}
+                                                </div>
+
+                                                @if(Session::has('comment_reply'))
+                                                    {{session('comment_reply')}}
+                                                @endif
+                                        {!!Form::close()!!}
                                     </div>
                                 </div> 
                                     

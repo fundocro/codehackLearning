@@ -14,6 +14,7 @@ use App\Photo;
 
  use App\Category;
 
+
 class AdminPostController extends Controller
 {
     /**
@@ -24,6 +25,7 @@ class AdminPostController extends Controller
     public function index()
     {
         $post=Post::all();
+     
         return view('admin.posts.index',compact('post'));
     }
 
