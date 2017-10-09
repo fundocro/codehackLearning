@@ -66,8 +66,8 @@
                   
                   <td>
                   
-                    {!!Form::open(['method'=>'DELETE','action'=>['PostCommentController@destroy',$reply->id]])!!}
-                        {!!Form::submit('Delete Comment',['class'=>'btn btn-danger'])!!}
+                    {!!Form::open(['method'=>'DELETE','action'=>['CommentReplieController@destroy',$reply->id]])!!}
+                        {!!Form::submit('Delete Reply',['class'=>'btn btn-danger'])!!}
                     {!!Form::close()!!}
                   
                       

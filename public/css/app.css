@@ -4,10 +4,10 @@
 #nested-media {
   margin-top: 60px; }
 
-#nested-comment {
-  margin-top: 60px; }
-
 .comment-reply {
   display: none; }
+
+#no_reply {
+  text-align: center !important; }
 
 /*# sourceMappingURL=app.css.map */
